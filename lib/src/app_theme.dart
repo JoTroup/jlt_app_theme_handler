@@ -16,30 +16,6 @@ class AppTheme {
 
   TextStyle primarySubMenuHeadingStyle = TextStyle(fontWeight: FontWeight.w800, fontSize: 16,);
 
-  Map userPermissions = {
-    "posMenu" : {
-      "allowedRoles" : ["authed"],
-      "permissions" : {}
-    },
-
-    "vendorMenu" : {
-      "authedRequired" : true,
-      "allowedRoles" : ["admin", "shift-supervisor"],
-      "permissions" : {}
-    },
-
-    "analyticsMenu" : {
-      "allowedRoles" : ["admin"],
-      "permissions" : {}
-    },
-
-    "appSettings" : {
-      "authedRequired" : true,
-      "allowedRoles" : ["admin", "shift-supervisor"],
-      "permissions" : {}
-    }
-  };
-
   late ValueNotifier<ThemeData> theme;
 
   String appLogoAssetString = "assets/ob-logo.png";
