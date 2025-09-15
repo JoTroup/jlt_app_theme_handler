@@ -1,6 +1,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:tinycolor2/tinycolor2.dart';
 
 class AppTheme {
 
@@ -19,7 +20,7 @@ class AppTheme {
   late ValueNotifier<ThemeData> theme;
 
   String appLogoAssetString = "assets/ob-logo.png";
-  Color _primaryColour = Colors.blue;
+  Color _primaryColour = TinyColor.fromString("#FF5400").toColor();
   Color _primaryGrey =  Colors.grey.shade200;
   EdgeInsets _setPadding = EdgeInsets.all(24.0);
   final BorderRadius _setBorderRadius = BorderRadius.circular(16);
