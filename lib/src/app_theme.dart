@@ -74,7 +74,6 @@ class AppTheme {
 
     return ThemeData(
       fontFamily: "Poppins",
-
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
