@@ -1,6 +1,6 @@
 name: jlt_app_theme_handler
 description: "A custom solution to handling themes across the JLT software suite."
-version: 0.0.3
+version: 0.0.4
 homepage:
 
 environment:
