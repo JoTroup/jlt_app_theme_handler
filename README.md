@@ -11,29 +11,80 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# jlt_app_theme_handler
+
+A custom solution for handling themes across the JLT software suite. This package provides a centralized way to manage app-wide theme data, colors, padding, border radius, and logo assets in your Flutter applications.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Singleton `AppTheme` class for global theme management
+- Reactive theme updates using `ValueNotifier<ThemeData>`
+- Customizable primary color, background color, padding, and border radius
+- Asset management for logos and fonts
+- Uses [tinycolor2](https://pub.dev/packages/tinycolor2) for color manipulation
+- Includes Poppins font family with multiple weights and styles
 
-## Getting started
+## Getting Started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add the package to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  jlt_app_theme_handler: ^0.0.4
+```
+
+Run `flutter pub get` to install dependencies.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Import the package and use the `AppTheme` singleton:
 
 ```dart
-const like = 'sample';
+import 'package:jlt_app_theme_handler/jlt_app_theme_handler.dart';
+
+final appTheme = AppTheme();
+
+// Listen to theme changes
+ValueListenableBuilder<ThemeData>(
+  valueListenable: appTheme.theme,
+  builder: (context, theme, child) {
+    return MaterialApp(
+      theme: theme,
+      home: MyHomePage(),
+    );
+  },
+);
+
+// Update theme
+appTheme.updateTheme(ThemeData.dark());
+
+// Access and modify theme properties
+Color primary = appTheme.getPrimaryColour();
+appTheme.setPrimaryColour(primaryColour: Colors.blue);
+EdgeInsets padding = appTheme.getAppPadding();
+appTheme.setAppPadding(edgeInsets: EdgeInsets.all(16));
 ```
 
-## Additional information
+## Assets & Fonts
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+This package includes logo assets and the Poppins font family. Make sure to declare them in your `pubspec.yaml`:
+
+```yaml
+flutter:
+  assets:
+    - lib/assets/
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: lib/assets/fonts/Poppins-Thin.ttf
+          weight: 100
+        # ...other font assets
+```
+
+## Contributing
+
+Contributions are welcome! Please open issues or submit pull requests on the [GitHub repository](https://github.com/your-repo-url).
+
+## License
+
+This project is licensed under the terms of the LICENSE file.
