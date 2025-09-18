@@ -31,28 +31,51 @@ class AppTheme {
     theme.value = newTheme;
   }
 
-  Color getPrimaryColour() {
+  bool getDeviceSmall() {
+    final firstView = WidgetsBinding.instance.platformDispatcher.views.first;
+    final logicalShortestSide =
+        firstView.physicalSize.shortestSide / firstView.devicePixelRatio;
+    if (logicalShortestSide < 600) {
+      return true;
+    }
+
+    return false;
+  }
+
+  getPrimaryColour() {
     return _primaryColour;
   }
+
   setPrimaryColour({required primaryColour}) {
     _primaryColour = primaryColour;
   }
+
   getPrimaryBackgroundColour() {
     return _primaryGrey;
   }
+
   setPrimaryBackgroundColour({required primaryBackgroundColour}) {
     _primaryGrey = primaryBackgroundColour;
   }
+
   EdgeInsets getAppPadding() {
+    final firstView = WidgetsBinding.instance.platformDispatcher.views.first;
+    final logicalShortestSide =
+        firstView.physicalSize.shortestSide / firstView.devicePixelRatio;
+    if (logicalShortestSide < 600) {
+      _setPadding = EdgeInsets.all(16);
+    }
+
     return _setPadding;
   }
+
   setAppPadding({required edgeInsets}) {
     _setPadding = edgeInsets;
   }
+
   BorderRadius getAppRadius() {
     return _setBorderRadius;
   }
-
 
 
   ThemeData getThemeData({Color? colour}) {
