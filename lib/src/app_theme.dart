@@ -26,6 +26,9 @@ class AppTheme {
   final BorderRadius _setBorderRadius = BorderRadius.circular(16);
   int currentViewIndex = 0;
 
+  BorderRadius primaryBorderRadius = BorderRadius.circular(35);
+
+
 
   void updateTheme(ThemeData newTheme) {
     theme.value = newTheme;
