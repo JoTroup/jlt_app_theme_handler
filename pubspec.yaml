@@ -1,10 +1,10 @@
 name: jlt_app_theme_handler
 description: "A custom solution to handling themes across the JLT software suite."
-version: 0.0.7
+version: 0.0.8
 homepage:
 
 environment:
-  sdk: any
+  sdk: ">=3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
