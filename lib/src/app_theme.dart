@@ -160,7 +160,7 @@ class AppTheme {
       ),
 
       inputDecorationTheme: InputDecorationTheme(
-          filled: false,
+          filled: true,
           fillColor: Colors.grey.shade300,
           iconColor: _primaryColour,
           helperStyle: const TextStyle(color: Colors.black54),
