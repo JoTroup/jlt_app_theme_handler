@@ -45,6 +45,19 @@ class AppTheme {
     return false;
   }
 
+  bool isDevicePortrait() {
+    final firstView = WidgetsBinding.instance.platformDispatcher.views.first;
+    final logicalShortestSide =
+        firstView.physicalSize.shortestSide / firstView.devicePixelRatio;
+    final logicalLongestSide =
+        firstView.physicalSize.longestSide / firstView.devicePixelRatio;
+    if (logicalShortestSide < logicalLongestSide) {
+      return true;
+    }
+
+    return false;
+  }
+
   getPrimaryColour() {
     return _primaryColour;
   }
@@ -118,12 +131,20 @@ class AppTheme {
         ),
       ),
 
+
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
           splashFactory: InkRipple.splashFactory,
           backgroundColor: WidgetStatePropertyAll(_primaryColour),
           foregroundColor: WidgetStatePropertyAll(Colors.white)
         )
+      ),
+
+
+      progressIndicatorTheme: ProgressIndicatorThemeData(
+
+        
+
       ),
 
 
@@ -171,6 +192,7 @@ class AppTheme {
           )
       ),
 
+
       dropdownMenuTheme: const DropdownMenuThemeData(
           textStyle: TextStyle(
               fontSize: 13,
@@ -180,7 +202,7 @@ class AppTheme {
           menuStyle: MenuStyle(
               alignment: Alignment.center,
               side: WidgetStatePropertyAll(
-                  BorderSide.none
+                  BorderSide.none,
               ),
               shape: WidgetStatePropertyAll(
                   RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(25)))
