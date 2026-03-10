@@ -1,4 +1,3 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tinycolor2/tinycolor2.dart';
@@ -47,15 +46,12 @@ class AppTheme {
 
   bool isDevicePortrait() {
     final firstView = WidgetsBinding.instance.platformDispatcher.views.first;
-    final logicalShortestSide =
-        firstView.physicalSize.shortestSide / firstView.devicePixelRatio;
-    final logicalLongestSide =
-        firstView.physicalSize.longestSide / firstView.devicePixelRatio;
-    if (logicalShortestSide < logicalLongestSide) {
-      return true;
-    }
+    final logicalWidth =
+        firstView.physicalSize.width / firstView.devicePixelRatio;
+    final logicalHeight =
+        firstView.physicalSize.height / firstView.devicePixelRatio;
 
-    return false;
+    return logicalHeight >= logicalWidth;
   }
 
   getPrimaryColour() {
@@ -223,4 +219,3 @@ class AppTheme {
   }
 
 }
-
