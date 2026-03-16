@@ -54,12 +54,16 @@ class AppTheme {
     return logicalHeight >= logicalWidth;
   }
 
-  getPrimaryColour() {
+  Color getPrimaryColour() {
     return _primaryColour;
   }
 
-  setPrimaryColour({required primaryColour}) {
+  void setPrimaryColour({required primaryColour}) {
     _primaryColour = primaryColour;
+  }
+
+  Color getPrimaryAccentColour() {
+    return TinyColor.fromColor(_primaryColour).spin(10).toColor();
   }
 
   getPrimaryBackgroundColour() {
