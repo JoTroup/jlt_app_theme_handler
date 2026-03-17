@@ -98,8 +98,7 @@ class AppTheme {
 
     _primaryColour = colour ?? _primaryColour;
 
-    Map<int, Color> color =
-    {
+    Map<int, Color> color = {
       50:Color.fromRGBO(_primaryColour.r.toInt(),_primaryColour.g.toInt(),_primaryColour.b.toInt(), .1),
       100:Color.fromRGBO(_primaryColour.r.toInt(),_primaryColour.g.toInt(),_primaryColour.b.toInt(),.2),
       200:Color.fromRGBO(_primaryColour.r.toInt(),_primaryColour.g.toInt(),_primaryColour.b.toInt(), .3),
@@ -115,8 +114,8 @@ class AppTheme {
     return ThemeData(
       fontFamily: "Poppins",
       useMaterial3: true,
-      splashColor: AppTheme().getPrimaryColour().withValues(alpha: 0.2),
-      highlightColor: AppTheme().getPrimaryColour().withValues(alpha: 0.3),
+      splashColor: _primaryColour.withValues(alpha: 0.2),
+      highlightColor: _primaryColour.withValues(alpha: 0.3),
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
