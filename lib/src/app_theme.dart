@@ -115,6 +115,8 @@ class AppTheme {
     return ThemeData(
       fontFamily: "Poppins",
       useMaterial3: true,
+      splashColor: AppTheme().getPrimaryColour().withValues(alpha: 0.2),
+      highlightColor: AppTheme().getPrimaryColour().withValues(alpha: 0.3),
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
