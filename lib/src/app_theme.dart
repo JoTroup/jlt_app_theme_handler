@@ -143,9 +143,10 @@ class AppTheme {
 
 
       progressIndicatorTheme: ProgressIndicatorThemeData(
-
-        
-
+        strokeCap: StrokeCap.round,
+        circularTrackColor: Colors.grey.shade200,
+        strokeWidth: 6,
+        trackGap: 6,
       ),
 
 
@@ -192,7 +193,6 @@ class AppTheme {
             borderRadius: BorderRadius.all(Radius.circular(25)),
           )
       ),
-
 
       dropdownMenuTheme: const DropdownMenuThemeData(
           textStyle: TextStyle(
