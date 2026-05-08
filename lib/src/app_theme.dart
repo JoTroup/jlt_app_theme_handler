@@ -137,8 +137,8 @@ class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
           splashFactory: InkRipple.splashFactory,
-          backgroundColor: WidgetStatePropertyAll(_primaryColour),
-          foregroundColor: WidgetStatePropertyAll(Colors.white)
+          backgroundColor: WidgetStatePropertyAll(Colors.transparent),
+          foregroundColor: WidgetStatePropertyAll(_primaryColour)
         )
       ),
 
