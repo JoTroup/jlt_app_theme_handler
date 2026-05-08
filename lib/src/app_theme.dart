@@ -136,6 +136,7 @@ class AppTheme {
 
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
+          padding: WidgetStatePropertyAll(EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 2)),
           splashFactory: InkRipple.splashFactory,
           backgroundColor: WidgetStatePropertyAll(Colors.transparent),
           foregroundColor: WidgetStatePropertyAll(_primaryColour)
