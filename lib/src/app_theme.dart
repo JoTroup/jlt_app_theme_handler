@@ -185,18 +185,43 @@ class AppTheme {
           color: Colors.black54
       ),
 
-      inputDecorationTheme: InputDecoration(
-          border: UnderlineInputBorder(
-            borderRadius: AppTheme().getAppRadius(),
-            borderSide: BorderSide(width: 0),
+      inputDecorationTheme: InputDecorationTheme(
+          contentPadding: getAppPadding().copyWith(top: 0, bottom: 0)/2,
+          fillColor: _primaryGrey,
+          filled: true,
+          iconColor: _primaryColour,
+          helperStyle: const TextStyle(color: Colors.black54),
+
+          // Unfocused outline
+          enabledBorder: OutlineInputBorder(
+            borderRadius: _setBorderRadius,
+            borderSide: BorderSide(
+              color: Colors.transparent, // <- unfocused stroke color
+              width: 1.2,            // <- unfocused stroke width
+            ),
           ),
-          prefixStyle: TextStyle(fontSize: 14, color: AppTheme().getPrimaryColour()),
+
+          // Focused outline
+          focusedBorder: OutlineInputBorder(
+            borderRadius: _setBorderRadius,
+            borderSide: BorderSide(
+              color: _primaryColour,
+              width: 1.8,
+            ),
+          ),
+
+
+          /*border: UnderlineInputBorder(
+            borderRadius: _setBorderRadius,
+            borderSide: BorderSide(width: 0, color: Colors.transparent),
+          ),*/
+          prefixStyle: TextStyle(fontSize: 14, color: _primaryColour),
           floatingLabelBehavior: FloatingLabelBehavior.always, // <----- just add this
-          hintStyle: TextStyle(fontSize: 12, color: Colors.black26)
+          hintStyle: TextStyle(color: Colors.black26)
       ),
 
-      dropdownMenuTheme: const DropdownMenuThemeData(
-          textStyle: TextStyle(
+      dropdownMenuTheme: DropdownMenuThemeData(
+          textStyle: const TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.bold,
               color: Colors.black54
@@ -204,16 +229,41 @@ class AppTheme {
           menuStyle: MenuStyle(
               alignment: Alignment.center,
               side: WidgetStatePropertyAll(
-                  BorderSide.none,
+                  BorderSide(color: _primaryColour.withValues(alpha: 0.2)),
               ),
               shape: WidgetStatePropertyAll(
-                  RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(25)))
+                  RoundedRectangleBorder(borderRadius: _setBorderRadius)
               )
           ),
           inputDecorationTheme: InputDecorationTheme(
+              contentPadding: getAppPadding().copyWith(top: 0, bottom: 0)/2,
+              fillColor: _primaryGrey,
+              filled: true,
+              iconColor: _primaryColour,
+              helperStyle: const TextStyle(color: Colors.black54),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: _setBorderRadius,
+                  borderSide: const BorderSide(
+                      color: Colors.transparent,
+                      width: 1.2,
+                  )
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: _setBorderRadius,
+                  borderSide: BorderSide(
+                      color: _primaryColour,
+                      width: 1.8,
+                  )
+              ),
               border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15))
-              )
+                  borderRadius: _setBorderRadius,
+                  borderSide: const BorderSide(
+                      color: Colors.transparent,
+                      width: 1.2,
+                  )
+              ),
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              hintStyle: const TextStyle(color: Colors.black26),
           )
       ),
 

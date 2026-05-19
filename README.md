@@ -65,6 +65,21 @@ EdgeInsets padding = appTheme.getAppPadding();
 appTheme.setAppPadding(edgeInsets: EdgeInsets.all(16));
 ```
 
+## Test on Emulator
+
+This repository includes an `example/` Flutter app that consumes the package via a local path dependency.
+
+From the package root:
+
+```bash
+flutter pub get
+cd example
+flutter pub get
+flutter run
+```
+
+In the example app, tap different color chips to validate that `AppTheme.updateTheme` and package styling are applied live.
+
 ## Assets & Fonts
 
 This package includes logo assets and the Poppins font family. Make sure to declare them in your `pubspec.yaml`:

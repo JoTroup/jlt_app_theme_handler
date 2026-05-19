@@ -28,45 +28,45 @@ flutter:
   fonts:
     - family: Poppins
       fonts:
-        - asset: lib\assets\fonts\Poppins-Thin.ttf
+        - asset: lib/assets/fonts/Poppins-Thin.ttf
           weight: 100
-        - asset: lib\assets\fonts\Poppins-ThinItalic.ttf
+        - asset: lib/assets/fonts/Poppins-ThinItalic.ttf
           style: italic
           weight: 100
-        - asset: lib\assets\fonts\Poppins-ExtraLight.ttf
+        - asset: lib/assets/fonts/Poppins-ExtraLight.ttf
           weight: 200
-        - asset: lib\assets\fonts\Poppins-ExtraLightItalic.ttf
+        - asset: lib/assets/fonts/Poppins-ExtraLightItalic.ttf
           style: italic
           weight: 200
-        - asset: lib\assets\fonts\Poppins-Light.ttf
+        - asset: lib/assets/fonts/Poppins-Light.ttf
           weight: 300
-        - asset: lib\assets\fonts\Poppins-LightItalic.ttf
+        - asset: lib/assets/fonts/Poppins-LightItalic.ttf
           style: italic
           weight: 300
-        - asset: lib\assets\fonts\Poppins-Regular.ttf
+        - asset: lib/assets/fonts/Poppins-Regular.ttf
           weight: 400
-        - asset: lib\assets\fonts\Poppins-Medium.ttf
+        - asset: lib/assets/fonts/Poppins-Medium.ttf
           weight: 500
-        - asset: lib\assets\fonts\Poppins-MediumItalic.ttf
+        - asset: lib/assets/fonts/Poppins-MediumItalic.ttf
           style: italic
           weight: 500
-        - asset: lib\assets\fonts\Poppins-SemiBold.ttf
+        - asset: lib/assets/fonts/Poppins-SemiBold.ttf
           weight: 600
-        - asset: lib\assets\fonts\Poppins-SemiBoldItalic.ttf
+        - asset: lib/assets/fonts/Poppins-SemiBoldItalic.ttf
           style: italic
           weight: 600
-        - asset: lib\assets\fonts\Poppins-Bold.ttf
+        - asset: lib/assets/fonts/Poppins-Bold.ttf
           weight: 700
-        - asset: lib\assets\fonts\Poppins-BoldItalic.ttf
+        - asset: lib/assets/fonts/Poppins-BoldItalic.ttf
           style: italic
           weight: 700
-        - asset: lib\assets\fonts\Poppins-ExtraBold.ttf
+        - asset: lib/assets/fonts/Poppins-ExtraBold.ttf
           weight: 800
-        - asset: lib\assets\fonts\Poppins-ExtraBoldItalic.ttf
+        - asset: lib/assets/fonts/Poppins-ExtraBoldItalic.ttf
           style: italic
           weight: 800
-        - asset: lib\assets\fonts\Poppins-Black.ttf
+        - asset: lib/assets/fonts/Poppins-Black.ttf
           weight: 900
-        - asset: lib\assets\fonts\Poppins-BlackItalic.ttf
+        - asset: lib/assets/fonts/Poppins-BlackItalic.ttf
           style: italic
           weight: 900
