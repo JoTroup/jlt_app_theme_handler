@@ -185,16 +185,14 @@ class AppTheme {
           color: Colors.black54
       ),
 
-      inputDecorationTheme: InputDecorationTheme(
-          filled: true,
-          fillColor: Colors.grey.shade300,
-          iconColor: _primaryColour,
-          helperStyle: const TextStyle(color: Colors.black54),
-          prefixStyle: const TextStyle(fontSize: 14),
-          border: const OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.all(Radius.circular(25)),
-          )
+      inputDecorationTheme: InputDecoration(
+          border: UnderlineInputBorder(
+            borderRadius: AppTheme().getAppRadius(),
+            borderSide: BorderSide(width: 0),
+          ),
+          prefixStyle: TextStyle(fontSize: 14, color: AppTheme().getPrimaryColour()),
+          floatingLabelBehavior: FloatingLabelBehavior.always, // <----- just add this
+          hintStyle: TextStyle(fontSize: 12, color: Colors.black26)
       ),
 
       dropdownMenuTheme: const DropdownMenuThemeData(
