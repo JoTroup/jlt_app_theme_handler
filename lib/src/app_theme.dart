@@ -229,19 +229,27 @@ class AppTheme {
           menuStyle: MenuStyle(
               alignment: Alignment.center,
               side: WidgetStatePropertyAll(
-                  BorderSide(color: _primaryColour.withValues(alpha: 0.2)),
+                  BorderSide(color: _primaryColour.withValues(alpha: 0.3)),
               ),
               shape: WidgetStatePropertyAll(
                   RoundedRectangleBorder(borderRadius: _setBorderRadius)
-              )
+              ),
+            backgroundColor: WidgetStatePropertyAll(Colors.white.withValues(alpha: 0.95)),
+            elevation: WidgetStatePropertyAll(4),
+            visualDensity: VisualDensity.compact,
           ),
           inputDecorationTheme: InputDecorationTheme(
-              contentPadding: getAppPadding().copyWith(top: 0, bottom: 0)/2,
-              fillColor: _primaryGrey,
-              filled: true,
-              iconColor: _primaryColour,
-              helperStyle: const TextStyle(color: Colors.black54),
-              enabledBorder: OutlineInputBorder(
+            contentPadding: getAppPadding().copyWith(top: 0, bottom: 0)/2,
+            fillColor: _primaryGrey,
+            filled: true,
+            iconColor: _primaryColour,
+            helperStyle: const TextStyle(color: Colors.black54),
+            visualDensity: VisualDensity.compact,
+            labelStyle: TextStyle(fontSize: 14, color: _primaryColour),
+            floatingLabelStyle: TextStyle(fontSize: 14, color: _primaryColour),
+            floatingLabelBehavior: FloatingLabelBehavior.always, // <----- just add this
+            hintStyle: const TextStyle(color: Colors.black26),
+            enabledBorder: OutlineInputBorder(
                   borderRadius: _setBorderRadius,
                   borderSide: const BorderSide(
                       color: Colors.transparent,
@@ -262,8 +270,6 @@ class AppTheme {
                       width: 1.2,
                   )
               ),
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintStyle: const TextStyle(color: Colors.black26),
           )
       ),
 

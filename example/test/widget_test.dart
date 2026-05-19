@@ -15,6 +15,6 @@ void main() {
 
     expect(find.text('Theme handler emulator demo'), findsOneWidget);
     expect(find.text('Primary action preview'), findsOneWidget);
-    expect(find.text('Dropdown preview'), findsOneWidget);
+    expect(find.text('Mode:'), findsWidgets);
   });
 }

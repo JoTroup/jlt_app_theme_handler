@@ -109,14 +109,10 @@ class _ThemePreviewPageState extends State<ThemePreviewPage> {
                   prefixText: 'Label ',
                 ),
               ),
-              const SizedBox(height: 24),
-              Text(
-                'Dropdown preview',
-                style: appTheme.primarySubMenuHeadingStyle,
-              ),
               const SizedBox(height: 12),
               DropdownMenu<String>(
                 initialSelection: selectedMode,
+                label: const Text('Mode'),
                 width: 260,
                 onSelected: (value) {
                   if (value == null) {
