@@ -102,7 +102,7 @@ class AppTheme {
 
   getH1TextStyle({Color? color, FontWeight? fontWeight}) {
     return TextStyle(
-        fontSize: isDevicePortrait() ? 20 : 24,
+        fontSize: isDevicePortrait() ? 28 : 32,
         fontWeight: fontWeight ?? FontWeight.w900,
         color: color ?? Colors.black87
     );
