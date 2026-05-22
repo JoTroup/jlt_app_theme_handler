@@ -110,7 +110,7 @@ class AppTheme {
 
   getH2TextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false}) {
     return TextStyle(
-        fontSize: isDevicePortrait() ? 26 : 28,
+        fontSize: isDevicePortrait() ? 16 : 16,
         fontWeight: subHeading ? FontWeight.w600 : (fontWeight ?? FontWeight.w800),
         color: TinyColor.fromColor((color ?? Colors.black54)).lighten(subHeading ? 20 : 0).toColor()
     );
