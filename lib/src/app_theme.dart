@@ -14,8 +14,6 @@ class AppTheme {
     theme = ValueNotifier<ThemeData>(getThemeData());
   }
 
-  TextStyle primarySubMenuHeadingStyle = TextStyle(fontWeight: FontWeight.w800, fontSize: 16,);
-
   late ValueNotifier<ThemeData> theme;
 
   String appLogoAssetString = "assets/ob-logo.png";
@@ -164,12 +162,7 @@ class AppTheme {
           size: 18
         ),
 
-        titleTextStyle: TextStyle(
-            fontFamily: "Poppins",
-            fontSize: kIsWeb ? 14 : 14,
-            color: Colors.black87,
-            fontWeight: FontWeight.w900
-        ),
+        titleTextStyle: getH2TextStyle(color: Colors.black87, fontWeight: FontWeight.w700)
       ),
 
 
@@ -232,7 +225,7 @@ class AppTheme {
           fillColor: _primaryGrey,
           filled: true,
           iconColor: _primaryColour,
-          helperStyle: const TextStyle(color: Colors.black54),
+          helperStyle: getBodyTextStyle(),
 
           // Unfocused outline
           enabledBorder: OutlineInputBorder(
@@ -257,17 +250,13 @@ class AppTheme {
             borderRadius: _setBorderRadius,
             borderSide: BorderSide(width: 0, color: Colors.transparent),
           ),*/
-          prefixStyle: TextStyle(fontSize: 14, color: _primaryColour),
+          prefixStyle: getBodyTextStyle(color: _primaryColour),
           floatingLabelBehavior: FloatingLabelBehavior.always, // <----- just add this
-          hintStyle: TextStyle(color: Colors.black26)
+          hintStyle: getBodyTextStyle(color: Colors.black26)
       ),
 
       dropdownMenuTheme: DropdownMenuThemeData(
-          textStyle: const TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.bold,
-              color: Colors.black54
-          ),
+          textStyle: getBodyTextStyle(),
           menuStyle: MenuStyle(
               alignment: Alignment.center,
               side: WidgetStatePropertyAll(
@@ -285,12 +274,12 @@ class AppTheme {
             fillColor: _primaryGrey,
             filled: true,
             iconColor: _primaryColour,
-            helperStyle: const TextStyle(color: Colors.black54),
+            helperStyle: getBodyTextStyle(),
             visualDensity: VisualDensity.compact,
-            labelStyle: TextStyle(fontSize: 14, color: _primaryColour),
-            floatingLabelStyle: TextStyle(fontSize: 14, color: _primaryColour),
+            labelStyle: getBodyTextStyle(color: _primaryColour),
+            floatingLabelStyle: getBodyTextStyle(color: _primaryColour),
             floatingLabelBehavior: FloatingLabelBehavior.always, // <----- just add this
-            hintStyle: const TextStyle(color: Colors.black26),
+            hintStyle: getBodyTextStyle(color: Colors.black26),
             enabledBorder: OutlineInputBorder(
                   borderRadius: _setBorderRadius,
                   borderSide: const BorderSide(
