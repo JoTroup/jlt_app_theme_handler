@@ -14,7 +14,9 @@ void main() {
     await tester.pumpWidget(const ThemeExampleApp());
 
     expect(find.text('Theme handler emulator demo'), findsOneWidget);
-    expect(find.text('Primary action preview'), findsOneWidget);
-    expect(find.text('Mode:'), findsWidgets);
+    expect(find.text('Theme preview'), findsOneWidget);
+    expect(find.text('Buttons'), findsOneWidget);
+    expect(find.text('Inputs'), findsOneWidget);
+    expect(find.text('Toggles'), findsOneWidget);
   });
 }

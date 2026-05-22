@@ -22,7 +22,7 @@ class AppTheme {
   Color _primaryColour = TinyColor.fromString("#FF5400").toColor();
   Color _primaryGrey =  Colors.grey.shade200;
   EdgeInsets _setPadding = EdgeInsets.all(24.0);
-  final BorderRadius _setBorderRadius = BorderRadius.circular(16);
+  BorderRadius _setBorderRadius = BorderRadius.circular(16);
   int currentViewIndex = 0;
 
   BorderRadius primaryBorderRadius = BorderRadius.circular(35);
@@ -93,6 +93,45 @@ class AppTheme {
     return _setBorderRadius;
   }
 
+  setAppRadius({required borderRadius}) {
+    _setBorderRadius = borderRadius;
+  }
+
+
+  /// Font Face and general theme data settings are set here. This is called when the app theme is updated, and the returned ThemeData is passed to the theme notifier.
+
+  getH1TextStyle({Color? color, FontWeight? fontWeight}) {
+    return TextStyle(
+        fontSize: isDevicePortrait() ? 20 : 24,
+        fontWeight: fontWeight ?? FontWeight.w900,
+        color: color ?? Colors.black87
+    );
+  }
+
+  getH2TextStyle({Color? color, FontWeight? fontWeight}) {
+    return TextStyle(
+        fontSize: isDevicePortrait() ? 18 : 20,
+        fontWeight: fontWeight ??  FontWeight.w800,
+        color: color ?? Colors.black87
+    );
+  }
+
+  getH3TextStyle({Color? color, FontWeight? fontWeight}) {
+    return TextStyle(
+        fontSize: isDevicePortrait() ? 16 : 18,
+        fontWeight: fontWeight ?? FontWeight.w700,
+        color: color ?? Colors.black87
+    );
+  }
+
+  getBodyTextStyle({Color? color, FontWeight? fontWeight}) {
+    return TextStyle(
+        fontSize:  isDevicePortrait() ? 12 : 14,
+        fontWeight:fontWeight ?? FontWeight.w500,
+        color: color ?? Colors.black87
+    );
+  }
+
 
   ThemeData getThemeData({Color? colour}) {
 
@@ -155,7 +194,9 @@ class AppTheme {
 
 
       switchTheme: SwitchThemeData(
+          splashRadius: 20 ,
           overlayColor: WidgetStatePropertyAll(_primaryColour),
+
           thumbColor: WidgetStateProperty.resolveWith<Color>((states) {
             if (!states.contains(WidgetState.selected)) {
               return Colors.black26;
@@ -164,6 +205,7 @@ class AppTheme {
             }
           }),
           trackOutlineColor: WidgetStateProperty.resolveWith<Color>((states) {
+
             if (!states.contains(WidgetState.selected)) {
               return Colors.black26;
             } else {
