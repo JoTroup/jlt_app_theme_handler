@@ -104,7 +104,7 @@ class AppTheme {
     return TextStyle(
         fontSize: isDevicePortrait() ? 28 : 32,
         fontWeight: (fontWeight ?? FontWeight.w900),
-        color: TinyColor.fromColor((color ?? Colors.black87)).lighten(subHeading ? 20 : 0).toColor()
+        color: TinyColor.fromColor((color ?? Colors.black54)).lighten(subHeading ? 20 : 0).toColor()
     );
   }
 
@@ -112,15 +112,15 @@ class AppTheme {
     return TextStyle(
         fontSize: isDevicePortrait() ? 26 : 28,
         fontWeight: fontWeight ??  FontWeight.w800,
-        color: TinyColor.fromColor((color ?? Colors.black87)).lighten(subHeading ? 20 : 0).toColor()
+        color: TinyColor.fromColor((color ?? Colors.black54)).lighten(subHeading ? 20 : 0).toColor()
     );
   }
 
   getH3TextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false}) {
     return TextStyle(
-        fontSize: isDevicePortrait() ? 16 : 18,
+        fontSize: isDevicePortrait() ? 14 : 14,
         fontWeight: fontWeight ?? FontWeight.w700,
-        color: TinyColor.fromColor((color ?? Colors.black87)).lighten(subHeading ? 20 : 0).toColor()
+        color: TinyColor.fromColor((color ?? Colors.black54)).lighten(subHeading ? 20 : 0).toColor()
     );
   }
 
@@ -128,7 +128,7 @@ class AppTheme {
     return TextStyle(
         fontSize:  isDevicePortrait() ? 12 : 12,
         fontWeight:fontWeight ?? FontWeight.w500,
-        color: TinyColor.fromColor((color ?? Colors.black87)).lighten(subHeading ? 20 : 0).toColor()
+        color: TinyColor.fromColor((color ?? Colors.black54)).lighten(subHeading ? 20 : 0).toColor()
     );
   }
 
