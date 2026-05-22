@@ -100,35 +100,35 @@ class AppTheme {
 
   /// Font Face and general theme data settings are set here. This is called when the app theme is updated, and the returned ThemeData is passed to the theme notifier.
 
-  getH1TextStyle({Color? color, FontWeight? fontWeight}) {
+  getH1TextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false}) {
     return TextStyle(
         fontSize: isDevicePortrait() ? 28 : 32,
-        fontWeight: fontWeight ?? FontWeight.w900,
-        color: color ?? Colors.black87
+        fontWeight: (fontWeight ?? FontWeight.w900),
+        color: TinyColor.fromColor((color ?? Colors.black87)).lighten(subHeading ? 10 : 0).toColor()
     );
   }
 
-  getH2TextStyle({Color? color, FontWeight? fontWeight}) {
+  getH2TextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false}) {
     return TextStyle(
         fontSize: isDevicePortrait() ? 26 : 28,
         fontWeight: fontWeight ??  FontWeight.w800,
-        color: color ?? Colors.black87
+        color: TinyColor.fromColor((color ?? Colors.black87)).lighten(subHeading ? 10 : 0).toColor()
     );
   }
 
-  getH3TextStyle({Color? color, FontWeight? fontWeight}) {
+  getH3TextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false}) {
     return TextStyle(
         fontSize: isDevicePortrait() ? 16 : 18,
         fontWeight: fontWeight ?? FontWeight.w700,
-        color: color ?? Colors.black87
+        color: TinyColor.fromColor((color ?? Colors.black87)).lighten(subHeading ? 10 : 0).toColor()
     );
   }
 
-  getBodyTextStyle({Color? color, FontWeight? fontWeight}) {
+  getBodyTextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false}) {
     return TextStyle(
-        fontSize:  isDevicePortrait() ? 12 : 14,
+        fontSize:  isDevicePortrait() ? 12 : 12,
         fontWeight:fontWeight ?? FontWeight.w500,
-        color: color ?? Colors.black87
+        color: TinyColor.fromColor((color ?? Colors.black87)).lighten(subHeading ? 10 : 0).toColor()
     );
   }
 
