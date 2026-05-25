@@ -184,6 +184,14 @@ class AppTheme {
         trackGap: 6,
       ),
 
+      scrollbarTheme: ScrollbarThemeData(
+        thumbColor: WidgetStatePropertyAll(_primaryColour.withValues(alpha: 0.5)),
+        trackColor: WidgetStatePropertyAll(_primaryColour.withValues(alpha: 0.9)),
+        trackBorderColor: WidgetStatePropertyAll(Colors.transparent),
+        radius: const Radius.circular(10),
+        thickness: WidgetStatePropertyAll(6),
+      ),
+
 
 
       switchTheme: SwitchThemeData(
