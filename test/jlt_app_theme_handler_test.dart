@@ -4,10 +4,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:jlt_app_theme_handler/jlt_app_theme_handler.dart';
 
 void main() {
-  final appTheme = AppTheme();
+  final testBinding = TestWidgetsFlutterBinding.ensureInitialized();
+  late AppTheme appTheme;
+
+  setUp(() {
+    appTheme = AppTheme();
+  });
 
   tearDown(() {
-    final testBinding = TestWidgetsFlutterBinding.ensureInitialized();
     testBinding.platformDispatcher.views.first.resetPhysicalSize();
     testBinding.platformDispatcher.views.first.resetDevicePixelRatio();
   });

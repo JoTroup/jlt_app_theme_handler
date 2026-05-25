@@ -1,8 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tinycolor2/tinycolor2.dart';
+import 'dart:async';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppTheme {
+
+  static const String _primaryColourKey = 'jlt_app_theme_handler.primary_colour';
+  static const String _primaryGreyKey = 'jlt_app_theme_handler.primary_grey';
 
   static final AppTheme _singleton = AppTheme._internal();
 
@@ -12,6 +17,7 @@ class AppTheme {
 
   AppTheme._internal() {
     theme = ValueNotifier<ThemeData>(getThemeData());
+    unawaited(loadFromPreferences());
   }
 
   late ValueNotifier<ThemeData> theme;
@@ -58,6 +64,7 @@ class AppTheme {
 
   void setPrimaryColour({required primaryColour}) {
     _primaryColour = primaryColour;
+    _scheduleThemePersist();
   }
 
   Color getPrimaryAccentColour() {
@@ -70,6 +77,7 @@ class AppTheme {
 
   setPrimaryBackgroundColour({required primaryBackgroundColour}) {
     _primaryGrey = primaryBackgroundColour;
+    _scheduleThemePersist();
   }
 
   EdgeInsets getAppPadding() {
@@ -319,4 +327,36 @@ class AppTheme {
     );
   }
 
+  Future<void> loadFromPreferences() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final storedPrimary = prefs.getInt(_primaryColourKey);
+      final storedGrey = prefs.getInt(_primaryGreyKey);
+
+      if (storedPrimary != null) {
+        _primaryColour = Color(storedPrimary);
+      }
+      if (storedGrey != null) {
+        _primaryGrey = Color(storedGrey);
+      }
+
+      theme.value = getThemeData();
+    } catch (_) {
+      // SharedPreferences can be unavailable in tests; ignore.
+    }
+  }
+
+  void _scheduleThemePersist() {
+    unawaited(_persistTheme());
+  }
+
+  Future<void> _persistTheme() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setInt(_primaryColourKey, _primaryColour.toARGB32());
+      await prefs.setInt(_primaryGreyKey, _primaryGrey.toARGB32());
+    } catch (_) {
+      // SharedPreferences can be unavailable in tests; ignore.
+    }
+  }
 }
