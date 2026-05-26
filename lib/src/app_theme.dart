@@ -37,7 +37,7 @@ class AppTheme {
     theme.value = newTheme;
   }
 
-  bool getDeviceSmall() {
+  bool isDeviceSmall() {
     final firstView = WidgetsBinding.instance.platformDispatcher.views.first;
     final logicalShortestSide =
         firstView.physicalSize.shortestSide / firstView.devicePixelRatio;
@@ -56,6 +56,10 @@ class AppTheme {
         firstView.physicalSize.height / firstView.devicePixelRatio;
 
     return logicalHeight >= logicalWidth;
+  }
+
+  bool isDeviceSmallPortrait() {
+    return isDeviceSmall() && isDevicePortrait();
   }
 
   Color getPrimaryColour() {
