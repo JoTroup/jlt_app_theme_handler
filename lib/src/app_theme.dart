@@ -110,32 +110,36 @@ class AppTheme {
 
   /// Font Face and general theme data settings are set here. This is called when the app theme is updated, and the returned ThemeData is passed to the theme notifier.
 
-  getH1TextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false}) {
+  TextStyle getH1TextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false, TextOverflow? overflow}) {
     return TextStyle(
+        overflow: overflow,
         fontSize: isDevicePortrait() ? 28 : 32,
         fontWeight: subHeading ? FontWeight.w700 : (fontWeight ?? FontWeight.w900),
         color: TinyColor.fromColor((color ?? Colors.black54)).lighten(subHeading ? 20 : 0).toColor()
     );
   }
 
-  getH2TextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false}) {
+  TextStyle getH2TextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false, TextOverflow? overflow}) {
     return TextStyle(
+        overflow: overflow,
         fontSize: isDevicePortrait() ? 16 : 16,
         fontWeight: subHeading ? FontWeight.w600 : (fontWeight ?? FontWeight.w800),
         color: TinyColor.fromColor((color ?? Colors.black54)).lighten(subHeading ? 20 : 0).toColor()
     );
   }
 
-  getH3TextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false}) {
+  TextStyle getH3TextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false, TextOverflow? overflow}) {
     return TextStyle(
+      overflow: overflow,
         fontSize: isDevicePortrait() ? 14 : 14,
         fontWeight: subHeading ? FontWeight.w500 : (fontWeight ?? FontWeight.w700),
         color: TinyColor.fromColor((color ?? Colors.black54)).lighten(subHeading ? 20 : 0).toColor()
     );
   }
 
-  getBodyTextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false}) {
+  TextStyle getBodyTextStyle({Color? color, FontWeight? fontWeight, bool subHeading = false, TextOverflow? overflow}) {
     return TextStyle(
+        overflow: overflow,
         fontSize:  isDevicePortrait() ? 12 : 12,
         fontWeight: subHeading ? FontWeight.w400 : (fontWeight ?? FontWeight.w500),
         color: TinyColor.fromColor((color ?? Colors.black54)).lighten(subHeading ? 20 : 0).toColor()
