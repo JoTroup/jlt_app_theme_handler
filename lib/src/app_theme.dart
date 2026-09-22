@@ -72,7 +72,7 @@ class AppTheme {
   }
 
   Color getPrimaryAccentColour() {
-    return TinyColor.fromColor(_primaryColour).spin(10).toColor();
+    return TinyColor.fromColor(_primaryColour).lighten(20).toColor();
   }
 
   getPrimaryBackgroundColour() {
