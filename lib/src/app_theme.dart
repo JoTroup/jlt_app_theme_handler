@@ -181,6 +181,15 @@ class AppTheme {
         titleTextStyle: getH2TextStyle(color: Colors.black87, fontWeight: FontWeight.w700)
       ),
 
+      textTheme: TextTheme(
+        displayLarge: getH1TextStyle(),
+        displayMedium: getH2TextStyle(),
+        displaySmall: getH3TextStyle(),
+        bodyLarge: getBodyTextStyle(),
+        bodyMedium: getBodyTextStyle(),
+        bodySmall: getBodyTextStyle(),
+      ),
+
 
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
