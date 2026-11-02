@@ -118,4 +118,38 @@ void main() {
     expect(themeData.textTheme.displayLarge?.fontFamily, 'Poppins');
     expect(themeData.textTheme.bodyLarge?.fontFamily, 'Poppins');
   });
+
+  testWidgets('logo text styles support default and per-type font overrides',
+      (tester) async {
+    appTheme.setDefaultFontFamily(fontFamily: 'Roboto');
+    expect(appTheme.getAppLogoTextStyle().fontFamily, 'Roboto');
+    expect(appTheme.getAppLogoSubtitleTextStyle().fontFamily, 'Roboto');
+
+    appTheme.setTextTypeFontFamily(
+      textType: AppTextType.appLogo,
+      fontFamily: 'Montserrat',
+    );
+    appTheme.setTextTypeFontFamily(
+      textType: AppTextType.appLogoSubtitle,
+      fontFamily: 'Inter',
+    );
+
+    expect(appTheme.getAppLogoTextStyle().fontFamily, 'Montserrat');
+    expect(appTheme.getAppLogoSubtitleTextStyle().fontFamily, 'Inter');
+  });
+
+  testWidgets('logo text styles support Google Font overrides', (tester) async {
+    appTheme.setDefaultGoogleFontFamily(googleFontFamily: 'Lato');
+    expect(appTheme.getAppLogoTextStyle().fontFamily, startsWith('Lato'));
+
+    appTheme.setTextTypeGoogleFontFamily(
+      textType: AppTextType.appLogoSubtitle,
+      googleFontFamily: 'Montserrat',
+    );
+
+    expect(
+      appTheme.getAppLogoSubtitleTextStyle().fontFamily,
+      startsWith('Montserrat'),
+    );
+  });
 }

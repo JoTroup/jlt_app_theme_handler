@@ -81,6 +81,10 @@ appTheme.setTextTypeGoogleFontFamily(
   textType: AppTextType.h1,
   googleFontFamily: 'Montserrat',
 );
+
+// Built-in styles for app logo/title and subtitle
+TextStyle logoTitleStyle = appTheme.getAppLogoTextStyle();
+TextStyle logoSubtitleStyle = appTheme.getAppLogoSubtitleTextStyle();
 ```
 
 ## Test on Emulator

@@ -5,7 +5,7 @@ import 'package:tinycolor2/tinycolor2.dart';
 import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum AppTextType { h1, h2, h3, body }
+enum AppTextType { h1, h2, h3, body, appLogo, appLogoSubtitle }
 
 class AppTheme {
   static const String _primaryColourKey =
@@ -288,6 +288,39 @@ class AppTheme {
 
     return _applyTextTypeFontOverride(
       textType: AppTextType.body,
+      textStyle: style,
+    );
+  }
+
+  TextStyle getAppLogoTextStyle(
+      {Color? color, FontWeight? fontWeight, TextOverflow? overflow}) {
+    final style = TextStyle(
+      fontFamily: _getFontFamilyForTextType(AppTextType.appLogo),
+      overflow: overflow,
+      fontSize: isDevicePortrait() ? 24 : 28,
+      fontWeight: fontWeight ?? FontWeight.w800,
+      letterSpacing: 0.3,
+      color: color ?? Colors.black87,
+    );
+
+    return _applyTextTypeFontOverride(
+      textType: AppTextType.appLogo,
+      textStyle: style,
+    );
+  }
+
+  TextStyle getAppLogoSubtitleTextStyle(
+      {Color? color, FontWeight? fontWeight, TextOverflow? overflow}) {
+    final style = TextStyle(
+      fontFamily: _getFontFamilyForTextType(AppTextType.appLogoSubtitle),
+      overflow: overflow,
+      fontSize: isDevicePortrait() ? 11 : 12,
+      fontWeight: fontWeight ?? FontWeight.w500,
+      color: color ?? Colors.black54,
+    );
+
+    return _applyTextTypeFontOverride(
+      textType: AppTextType.appLogoSubtitle,
       textStyle: style,
     );
   }
