@@ -63,6 +63,15 @@ Color primary = appTheme.getPrimaryColour();
 appTheme.setPrimaryColour(primaryColour: Colors.blue);
 EdgeInsets padding = appTheme.getAppPadding();
 appTheme.setAppPadding(edgeInsets: EdgeInsets.all(16));
+
+// Change the default font globally
+appTheme.setDefaultFontFamily(fontFamily: 'Roboto');
+
+// Override just one text type (e.g. H1)
+appTheme.setTextTypeFontFamily(
+  textType: AppTextType.h1,
+  fontFamily: 'Montserrat',
+);
 ```
 
 ## Test on Emulator

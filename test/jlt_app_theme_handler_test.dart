@@ -16,14 +16,16 @@ void main() {
     testBinding.platformDispatcher.views.first.resetDevicePixelRatio();
   });
 
-  testWidgets('isDevicePortrait returns true for portrait size', (tester) async {
+  testWidgets('isDevicePortrait returns true for portrait size',
+      (tester) async {
     tester.view.devicePixelRatio = 2.0;
     tester.view.physicalSize = const Size(1080, 1920);
 
     expect(appTheme.isDevicePortrait(), isTrue);
   });
 
-  testWidgets('isDevicePortrait returns false for landscape size', (tester) async {
+  testWidgets('isDevicePortrait returns false for landscape size',
+      (tester) async {
     tester.view.devicePixelRatio = 2.0;
     tester.view.physicalSize = const Size(1920, 1080);
 
@@ -35,5 +37,42 @@ void main() {
     tester.view.physicalSize = const Size(1000, 1000);
 
     expect(appTheme.isDevicePortrait(), isTrue);
+  });
+
+  testWidgets('setDefaultFontFamily updates theme defaults', (tester) async {
+    appTheme.setDefaultFontFamily(fontFamily: 'Roboto');
+
+    final themeData = appTheme.getThemeData();
+    expect(appTheme.getDefaultFontFamily(), 'Roboto');
+    expect(themeData.textTheme.displayLarge?.fontFamily, 'Roboto');
+    expect(themeData.textTheme.bodyLarge?.fontFamily, 'Roboto');
+  });
+
+  testWidgets('setTextTypeFontFamily overrides a specific text type',
+      (tester) async {
+    appTheme.setDefaultFontFamily(fontFamily: 'Poppins');
+    appTheme.setTextTypeFontFamily(
+      textType: AppTextType.h1,
+      fontFamily: 'Montserrat',
+    );
+
+    final themeData = appTheme.getThemeData();
+    expect(themeData.textTheme.displayLarge?.fontFamily, 'Montserrat');
+    expect(themeData.textTheme.displayMedium?.fontFamily, 'Poppins');
+    expect(themeData.textTheme.bodyLarge?.fontFamily, 'Poppins');
+  });
+
+  testWidgets('font setters reject empty families', (tester) async {
+    expect(
+      () => appTheme.setDefaultFontFamily(fontFamily: '   '),
+      throwsA(isA<ArgumentError>()),
+    );
+    expect(
+      () => appTheme.setTextTypeFontFamily(
+        textType: AppTextType.h1,
+        fontFamily: '',
+      ),
+      throwsA(isA<ArgumentError>()),
+    );
   });
 }
