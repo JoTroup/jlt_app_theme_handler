@@ -25,6 +25,8 @@ class AppTheme {
 
   late ValueNotifier<ThemeData> theme;
 
+  String appName = "App Name";
+  String appTagline = "Example App Tagline";
   String appLogoAssetString = "assets/ob-logo.png";
   String _defaultFontFamily = "Poppins";
   final Map<AppTextType, String> _textTypeFontFamilyOverrides = {};
