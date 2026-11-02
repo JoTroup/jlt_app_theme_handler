@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tinycolor2/tinycolor2.dart';
 import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,6 +28,8 @@ class AppTheme {
   String appLogoAssetString = "assets/ob-logo.png";
   String _defaultFontFamily = "Poppins";
   final Map<AppTextType, String> _textTypeFontFamilyOverrides = {};
+  String? _defaultGoogleFontFamily;
+  final Map<AppTextType, String> _textTypeGoogleFontOverrides = {};
   Color _primaryColour = TinyColor.fromString("#FF5400").toColor();
   Color _primaryGrey = Colors.grey.shade200;
   EdgeInsets _setPadding = EdgeInsets.all(24.0);
@@ -116,12 +119,10 @@ class AppTheme {
   }
 
   void setDefaultFontFamily({required String fontFamily}) {
-    if (fontFamily.trim().isEmpty) {
-      throw ArgumentError.value(
-          fontFamily, 'fontFamily', 'fontFamily cannot be empty');
-    }
-
-    _defaultFontFamily = fontFamily.trim();
+    _defaultFontFamily = _normalizeFontName(
+      fontName: fontFamily,
+      argumentName: 'fontFamily',
+    );
     theme.value = getThemeData();
   }
 
@@ -131,12 +132,10 @@ class AppTheme {
 
   void setTextTypeFontFamily(
       {required AppTextType textType, required String fontFamily}) {
-    if (fontFamily.trim().isEmpty) {
-      throw ArgumentError.value(
-          fontFamily, 'fontFamily', 'fontFamily cannot be empty');
-    }
-
-    _textTypeFontFamilyOverrides[textType] = fontFamily.trim();
+    _textTypeFontFamilyOverrides[textType] = _normalizeFontName(
+      fontName: fontFamily,
+      argumentName: 'fontFamily',
+    );
     theme.value = getThemeData();
   }
 
@@ -149,20 +148,82 @@ class AppTheme {
     return _textTypeFontFamilyOverrides[textType] ?? _defaultFontFamily;
   }
 
+  String? getDefaultGoogleFontFamily() {
+    return _defaultGoogleFontFamily;
+  }
+
+  void setDefaultGoogleFontFamily({required String googleFontFamily}) {
+    _defaultGoogleFontFamily = _normalizeFontName(
+      fontName: googleFontFamily,
+      argumentName: 'googleFontFamily',
+    );
+    theme.value = getThemeData();
+  }
+
+  void clearDefaultGoogleFontFamily() {
+    _defaultGoogleFontFamily = null;
+    theme.value = getThemeData();
+  }
+
+  String? getTextTypeGoogleFontFamily({required AppTextType textType}) {
+    return _textTypeGoogleFontOverrides[textType];
+  }
+
+  void setTextTypeGoogleFontFamily(
+      {required AppTextType textType, required String googleFontFamily}) {
+    _textTypeGoogleFontOverrides[textType] = _normalizeFontName(
+      fontName: googleFontFamily,
+      argumentName: 'googleFontFamily',
+    );
+    theme.value = getThemeData();
+  }
+
+  void clearTextTypeGoogleFontFamily({required AppTextType textType}) {
+    _textTypeGoogleFontOverrides.remove(textType);
+    theme.value = getThemeData();
+  }
+
+  String _normalizeFontName(
+      {required String fontName, required String argumentName}) {
+    final normalised = fontName.trim();
+    if (normalised.isEmpty) {
+      throw ArgumentError.value(
+          fontName, argumentName, '$argumentName cannot be empty');
+    }
+    return normalised;
+  }
+
+  TextStyle _applyTextTypeFontOverride(
+      {required AppTextType textType, required TextStyle textStyle}) {
+    final googleFontFamily =
+        _textTypeGoogleFontOverrides[textType] ?? _defaultGoogleFontFamily;
+    if (googleFontFamily != null) {
+      return GoogleFonts.getFont(googleFontFamily, textStyle: textStyle);
+    }
+
+    return textStyle;
+  }
+
   TextStyle getH1TextStyle(
       {Color? color,
       FontWeight? fontWeight,
       bool subHeading = false,
       TextOverflow? overflow}) {
-    return TextStyle(
-        fontFamily: _getFontFamilyForTextType(AppTextType.h1),
-        overflow: overflow,
-        fontSize: isDevicePortrait() ? 28 : 32,
-        fontWeight:
-            subHeading ? FontWeight.w700 : (fontWeight ?? FontWeight.w900),
-        color: TinyColor.fromColor((color ?? Colors.black54))
-            .lighten(subHeading ? 20 : 0)
-            .toColor());
+    final style = TextStyle(
+      fontFamily: _getFontFamilyForTextType(AppTextType.h1),
+      overflow: overflow,
+      fontSize: isDevicePortrait() ? 28 : 32,
+      fontWeight:
+          subHeading ? FontWeight.w700 : (fontWeight ?? FontWeight.w900),
+      color: TinyColor.fromColor((color ?? Colors.black54))
+          .lighten(subHeading ? 20 : 0)
+          .toColor(),
+    );
+
+    return _applyTextTypeFontOverride(
+      textType: AppTextType.h1,
+      textStyle: style,
+    );
   }
 
   TextStyle getH2TextStyle(
@@ -170,15 +231,21 @@ class AppTheme {
       FontWeight? fontWeight,
       bool subHeading = false,
       TextOverflow? overflow}) {
-    return TextStyle(
-        fontFamily: _getFontFamilyForTextType(AppTextType.h2),
-        overflow: overflow,
-        fontSize: isDevicePortrait() ? 16 : 16,
-        fontWeight:
-            subHeading ? FontWeight.w600 : (fontWeight ?? FontWeight.w800),
-        color: TinyColor.fromColor((color ?? Colors.black54))
-            .lighten(subHeading ? 20 : 0)
-            .toColor());
+    final style = TextStyle(
+      fontFamily: _getFontFamilyForTextType(AppTextType.h2),
+      overflow: overflow,
+      fontSize: isDevicePortrait() ? 16 : 16,
+      fontWeight:
+          subHeading ? FontWeight.w600 : (fontWeight ?? FontWeight.w800),
+      color: TinyColor.fromColor((color ?? Colors.black54))
+          .lighten(subHeading ? 20 : 0)
+          .toColor(),
+    );
+
+    return _applyTextTypeFontOverride(
+      textType: AppTextType.h2,
+      textStyle: style,
+    );
   }
 
   TextStyle getH3TextStyle(
@@ -186,15 +253,21 @@ class AppTheme {
       FontWeight? fontWeight,
       bool subHeading = false,
       TextOverflow? overflow}) {
-    return TextStyle(
-        fontFamily: _getFontFamilyForTextType(AppTextType.h3),
-        overflow: overflow,
-        fontSize: isDevicePortrait() ? 14 : 14,
-        fontWeight:
-            subHeading ? FontWeight.w500 : (fontWeight ?? FontWeight.w700),
-        color: TinyColor.fromColor((color ?? Colors.black54))
-            .lighten(subHeading ? 20 : 0)
-            .toColor());
+    final style = TextStyle(
+      fontFamily: _getFontFamilyForTextType(AppTextType.h3),
+      overflow: overflow,
+      fontSize: isDevicePortrait() ? 14 : 14,
+      fontWeight:
+          subHeading ? FontWeight.w500 : (fontWeight ?? FontWeight.w700),
+      color: TinyColor.fromColor((color ?? Colors.black54))
+          .lighten(subHeading ? 20 : 0)
+          .toColor(),
+    );
+
+    return _applyTextTypeFontOverride(
+      textType: AppTextType.h3,
+      textStyle: style,
+    );
   }
 
   TextStyle getBodyTextStyle(
@@ -202,15 +275,21 @@ class AppTheme {
       FontWeight? fontWeight,
       bool subHeading = false,
       TextOverflow? overflow}) {
-    return TextStyle(
-        fontFamily: _getFontFamilyForTextType(AppTextType.body),
-        overflow: overflow,
-        fontSize: isDevicePortrait() ? 12 : 12,
-        fontWeight:
-            subHeading ? FontWeight.w400 : (fontWeight ?? FontWeight.w500),
-        color: TinyColor.fromColor((color ?? Colors.black54))
-            .lighten(subHeading ? 20 : 0)
-            .toColor());
+    final style = TextStyle(
+      fontFamily: _getFontFamilyForTextType(AppTextType.body),
+      overflow: overflow,
+      fontSize: isDevicePortrait() ? 12 : 12,
+      fontWeight:
+          subHeading ? FontWeight.w400 : (fontWeight ?? FontWeight.w500),
+      color: TinyColor.fromColor((color ?? Colors.black54))
+          .lighten(subHeading ? 20 : 0)
+          .toColor(),
+    );
+
+    return _applyTextTypeFontOverride(
+      textType: AppTextType.body,
+      textStyle: style,
+    );
   }
 
   ThemeData getThemeData({Color? colour}) {

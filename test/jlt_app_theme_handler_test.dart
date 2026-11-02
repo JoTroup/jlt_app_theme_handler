@@ -9,6 +9,12 @@ void main() {
 
   setUp(() {
     appTheme = AppTheme();
+    appTheme.setDefaultFontFamily(fontFamily: 'Poppins');
+    appTheme.clearDefaultGoogleFontFamily();
+    for (final textType in AppTextType.values) {
+      appTheme.clearTextTypeFontFamily(textType: textType);
+      appTheme.clearTextTypeGoogleFontFamily(textType: textType);
+    }
   });
 
   tearDown(() {
@@ -74,5 +80,42 @@ void main() {
       ),
       throwsA(isA<ArgumentError>()),
     );
+  });
+
+  testWidgets('setDefaultGoogleFontFamily applies Google Font globally',
+      (tester) async {
+    appTheme.setDefaultGoogleFontFamily(googleFontFamily: 'Lato');
+
+    final themeData = appTheme.getThemeData();
+    expect(appTheme.getDefaultGoogleFontFamily(), 'Lato');
+    expect(themeData.textTheme.displayLarge?.fontFamily, startsWith('Lato'));
+    expect(themeData.textTheme.bodyLarge?.fontFamily, startsWith('Lato'));
+  });
+
+  testWidgets('setTextTypeGoogleFontFamily overrides one text type',
+      (tester) async {
+    appTheme.setDefaultGoogleFontFamily(googleFontFamily: 'Lato');
+    appTheme.setTextTypeGoogleFontFamily(
+      textType: AppTextType.h1,
+      googleFontFamily: 'Montserrat',
+    );
+
+    final themeData = appTheme.getThemeData();
+    expect(
+      themeData.textTheme.displayLarge?.fontFamily,
+      startsWith('Montserrat'),
+    );
+    expect(themeData.textTheme.displayMedium?.fontFamily, startsWith('Lato'));
+  });
+
+  testWidgets('clearDefaultGoogleFontFamily reverts to local families',
+      (tester) async {
+    appTheme.setDefaultFontFamily(fontFamily: 'Poppins');
+    appTheme.setDefaultGoogleFontFamily(googleFontFamily: 'Lato');
+    appTheme.clearDefaultGoogleFontFamily();
+
+    final themeData = appTheme.getThemeData();
+    expect(themeData.textTheme.displayLarge?.fontFamily, 'Poppins');
+    expect(themeData.textTheme.bodyLarge?.fontFamily, 'Poppins');
   });
 }

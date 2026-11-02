@@ -72,6 +72,15 @@ appTheme.setTextTypeFontFamily(
   textType: AppTextType.h1,
   fontFamily: 'Montserrat',
 );
+
+// Use a Google Font globally
+appTheme.setDefaultGoogleFontFamily(googleFontFamily: 'Lato');
+
+// Override a specific text type with a different Google Font
+appTheme.setTextTypeGoogleFontFamily(
+  textType: AppTextType.h1,
+  googleFontFamily: 'Montserrat',
+);
 ```
 
 ## Test on Emulator
