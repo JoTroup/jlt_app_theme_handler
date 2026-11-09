@@ -454,6 +454,15 @@ class AppTheme {
               ),
             ),
 
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: _setBorderRadius,
+              borderSide: BorderSide(
+                color: Colors.red.shade700,
+                width: 1.8,
+              ),
+            ),
+
+
             /*border: UnderlineInputBorder(
             borderRadius: _setBorderRadius,
             borderSide: BorderSide(width: 0, color: Colors.transparent),
