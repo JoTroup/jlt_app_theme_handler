@@ -1,6 +1,6 @@
 name: jlt_app_theme_handler
 description: "A custom solution to handling themes across the JLT software suite."
-version: 0.1.4
+version: 0.2.0
 
 environment:
   sdk: ">=3.0.0"
@@ -13,6 +13,7 @@ dependencies:
   tinycolor2: ^3.0.1
   shared_preferences: ^2.2.3
   google_fonts: ^9.0.0
+  material_ui: ^1.11.1
 
 dev_dependencies:
   flutter_test:

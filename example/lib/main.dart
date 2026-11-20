@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:jlt_app_theme_handler/jlt_app_theme_handler.dart';
 
 void main() {
